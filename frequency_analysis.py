@@ -17,3 +17,11 @@ for letter, count in sorted_dict.items():
         largest_count = count
         most_common_letter = letter
 print("most common letter: " + most_common_letter + f"{largest_count:>5}")
+
+for ord in range(97,122,1):
+    if most_common_letter + chr(ord) in ciphertext:
+        print("yes " + most_common_letter + chr(ord))
+    elif chr(ord) + most_common_letter in ciphertext:
+        print("yes " + chr(ord) + most_common_letter)
+    else:
+        print("no")
