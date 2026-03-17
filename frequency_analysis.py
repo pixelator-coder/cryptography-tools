@@ -2,9 +2,18 @@ ciphertext = "pm ol ohk hufaopun jvumpkluaphs av zhf, ol dyval pa pu jpwoly, aoh
 char_count = {}
 total_count = 0
 for character in ciphertext:
+    if ord(character) < 97 or ord(character) > 122:
+        continue
     char_count[character] = char_count.get(character, 0) + 1
     total_count += 1
 sorted_dict = dict(sorted(char_count.items()))
-for character, count in sorted_dict.items():
-    percentage = round(count*100/total_count, 1)
-    print(character + f"{count:>5}"+ f"{percentage:>7}")
+largest_percentage = 0
+most_common_letter = ""
+for letter, count in sorted_dict.items():
+    percentage = count*100/total_count
+    rounded_percentage = round(percentage, 1)
+    print(letter + f"{count:>5}"+ f"{rounded_percentage:>7}")
+    if rounded_percentage > largest_percentage:
+        largest_percentage = rounded_percentage
+        most_common_letter = letter
+print("most common letter: " + most_common_letter + f"{largest_percentage:>5}")
