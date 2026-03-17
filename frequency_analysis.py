@@ -7,13 +7,13 @@ for character in ciphertext:
     char_count[character] = char_count.get(character, 0) + 1
     total_count += 1
 sorted_dict = dict(sorted(char_count.items()))
-largest_percentage = 0
+largest_count = 0
 most_common_letter = ""
 for letter, count in sorted_dict.items():
     percentage = count*100/total_count
     rounded_percentage = round(percentage, 1)
     print(letter + f"{count:>5}"+ f"{rounded_percentage:>7}")
-    if rounded_percentage > largest_percentage:
-        largest_percentage = rounded_percentage
+    if count > largest_count:
+        largest_count = count
         most_common_letter = letter
-print("most common letter: " + most_common_letter + f"{largest_percentage:>5}")
+print("most common letter: " + most_common_letter + f"{largest_count:>5}")
