@@ -6,22 +6,22 @@ for character in ciphertext:
         continue
     char_count[character] = char_count.get(character, 0) + 1
     total_count += 1
-sorted_dict = dict(sorted(char_count.items()))
-largest_count = 0
-most_common_letter = ""
-for letter, count in sorted_dict.items():
-    percentage = count*100/total_count
-    rounded_percentage = round(percentage, 1)
-    print(letter + f"{count:>5}"+ f"{rounded_percentage:>7}")
-    if count > largest_count:
-        largest_count = count
-        most_common_letter = letter
-print("most common letter: " + most_common_letter + f"{largest_count:>5}")
+sorted_dict = dict(sorted(char_count.items(), key=lambda item: item[1], reverse=True))
+most_common_letter = list(sorted_dict.keys())[0]
+second_most_common_letter = list(sorted_dict.keys())[1]
+third_most_common_letter = list(sorted_dict.keys())[2]
+print("Most common letter: " + most_common_letter)
+print("Second most common letter: " + second_most_common_letter)
+print("Third most common letter: " + third_most_common_letter)
 
+num_neighboring_letters = 0
 for ord in range(97,122,1):
     if most_common_letter + chr(ord) in ciphertext:
         print("yes " + most_common_letter + chr(ord))
+        num_neighboring_letters += 1
     elif chr(ord) + most_common_letter in ciphertext:
         print("yes " + chr(ord) + most_common_letter)
+        num_neighboring_letters += 1
     else:
         print("no")
+print("The most common letter neighbors " + str(num_neighboring_letters) + " letters.")
