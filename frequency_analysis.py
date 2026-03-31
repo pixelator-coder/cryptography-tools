@@ -15,38 +15,15 @@ print("Most common letter: " + most_common_letter)
 print("Second most common letter: " + second_most_common_letter)
 print("Third most common letter: " + third_most_common_letter)
 
-num_neighboring_letters = 0
-for ord in range(97,122,1):
-    if most_common_letter + chr(ord) in ciphertext:
-        print("yes " + most_common_letter + chr(ord))
-        num_neighboring_letters += 1
-    elif chr(ord) + most_common_letter in ciphertext:
-        print("yes " + chr(ord) + most_common_letter)
-        num_neighboring_letters += 1
-    else:
-        print("no")
-print("The most common letter neighbors " + str(num_neighboring_letters) + " letters.")
+def count_neighboring_letters(ciphertext, letter):
+    num_neighboring_letters = 0
+    for ord in range(97,122,1):
+        if letter + chr(ord) in ciphertext:
+            num_neighboring_letters += 1
+        elif chr(ord) + letter in ciphertext:
+            num_neighboring_letters += 1
+    print(f"{letter} neighbors " + str(num_neighboring_letters) + " letters.")
 
-num_neighboring_letters = 0
-for ord in range(97,122,1):
-    if second_most_common_letter + chr(ord) in ciphertext:
-        print("yes " + second_most_common_letter + chr(ord))
-        num_neighboring_letters += 1
-    elif chr(ord) + second_most_common_letter in ciphertext:
-        print("yes " + chr(ord) + second_most_common_letter)
-        num_neighboring_letters += 1
-    else:
-        print("no")
-print("The 2nd most common letter neighbors " + str(num_neighboring_letters) + " letters.")
-
-num_neighboring_letters = 0
-for ord in range(97,122,1):
-    if third_most_common_letter + chr(ord) in ciphertext:
-        print("yes " + third_most_common_letter + chr(ord))
-        num_neighboring_letters += 1
-    elif chr(ord) + third_most_common_letter in ciphertext:
-        print("yes " + chr(ord) + third_most_common_letter)
-        num_neighboring_letters += 1
-    else:
-        print("no")
-print("The 3rd most common letter neighbors " + str(num_neighboring_letters) + " letters.")
+count_neighboring_letters(ciphertext, most_common_letter)
+count_neighboring_letters(ciphertext, second_most_common_letter)
+count_neighboring_letters(ciphertext, third_most_common_letter)
