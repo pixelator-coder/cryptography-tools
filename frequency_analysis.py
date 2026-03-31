@@ -28,7 +28,25 @@ def count_neighboring_letters(ciphertext, letter):
             num_neighboring_letters += 1
     print(f"{letter} neighbors " + str(num_neighboring_letters) + " letters.")
     print(f"{letter} repeats itself " + str(num_repeats_itself) + " times.")
+    return num_repeats_itself
 
-count_neighboring_letters(ciphertext, most_common_letter)
-count_neighboring_letters(ciphertext, second_most_common_letter)
-count_neighboring_letters(ciphertext, third_most_common_letter)
+num_repeats_itself = count_neighboring_letters(ciphertext, most_common_letter)
+# count_neighboring_letters(ciphertext, second_most_common_letter)
+# count_neighboring_letters(ciphertext, third_most_common_letter)
+
+if num_repeats_itself > 0:
+    shift = ord('e') - ord(most_common_letter)
+    print(f"Assuming the most common ciphertext letter, {most_common_letter}, is 'e', then the shift is {shift}.")
+    maybe_plaintext = ""
+    for character in ciphertext:
+        if ord(character) < 97 or ord(character) > 122:
+            maybe_plaintext += character
+        else:
+            new_letter_ord = ord(character) + shift
+            if new_letter_ord > 122:
+                new_letter_ord = new_letter_ord - 26
+            new_letter = chr(new_letter_ord)
+            maybe_plaintext += new_letter
+
+print(f"The plaintext message might be: {maybe_plaintext}")
+        
