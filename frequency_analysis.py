@@ -17,12 +17,17 @@ print("Third most common letter: " + third_most_common_letter)
 
 def count_neighboring_letters(ciphertext, letter):
     num_neighboring_letters = 0
+    num_repeats_itself = 0
     for ord in range(97,122,1):
-        if letter + chr(ord) in ciphertext:
+        if letter + chr(ord) in ciphertext and letter == chr(ord):
+            num_neighboring_letters += 1
+            num_repeats_itself += 1
+        elif letter + chr(ord) in ciphertext:
             num_neighboring_letters += 1
         elif chr(ord) + letter in ciphertext:
             num_neighboring_letters += 1
     print(f"{letter} neighbors " + str(num_neighboring_letters) + " letters.")
+    print(f"{letter} repeats itself " + str(num_repeats_itself) + " times.")
 
 count_neighboring_letters(ciphertext, most_common_letter)
 count_neighboring_letters(ciphertext, second_most_common_letter)
