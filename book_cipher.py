@@ -1,0 +1,18 @@
+import random
+
+keytext = "Three rings for the Elven-lords under the sky, Seven for  the  Dwarf-lords  in  their  halls  of  stone,  Nine  for  Mortal  Men  doomed  to  die, One  for  the  Dark  Lord  on  his  dark  throne In the Land of Mordor  where  the  Shadows  lie. One  Ring  to  rule  them  all,  One  Ring  to  find  them, One  Ring  to  bring  them  all  and  in  the  darkness  bind  them In  the  Land  of  Mordor  where  the  Shadows  lie."
+letter_to_num_map = {"e": [2, 18, 24, 30]}
+plaintext = "mememe"
+list_of_letters = list(plaintext)
+index_of_letter = 0
+encrypted_list = []
+while index_of_letter < len(list_of_letters):
+    if list_of_letters[index_of_letter] == "e":
+        replacement_index = random.randint(0, len(letter_to_num_map["e"]) - 1)
+        replacement_number = letter_to_num_map["e"][replacement_index]
+        encrypted_list.append(replacement_number)
+        index_of_letter += 1
+    else:
+        encrypted_list.append(list_of_letters[index_of_letter])
+        index_of_letter += 1
+print(encrypted_list)
