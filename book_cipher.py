@@ -3,12 +3,14 @@ import random
 keytext = "Three rings for the Elven-lords under the sky, Seven for  the  Dwarf-lords  in  their  halls  of  stone,  Nine  for  Mortal  Men  doomed  to  die, One  for  the  Dark  Lord  on  his  dark  throne In the Land of Mordor  where  the  Shadows  lie. One  Ring  to  rule  them  all,  One  Ring  to  find  them, One  Ring  to  bring  them  all  and  in  the  darkness  bind  them In  the  Land  of  Mordor  where  the  Shadows  lie."
 letter_to_num_map = {"e": [2, 18, 24, 30]}
 plaintext = "mememe"
-encrypted_string = ""
-for i, letter in enumerate(plaintext):
+plaintext_as_list = list(plaintext)
+def letter_to_number(letter):
     if letter == "e":
         replacement_index = random.randint(0, len(letter_to_num_map["e"]) - 1)
         replacement_number = letter_to_num_map["e"][replacement_index]
-        encrypted_string += str(replacement_number)
+        return replacement_number
     else:
-        encrypted_string += letter
-print(encrypted_string)
+        return letter
+    
+ciphertext = map(letter_to_number, plaintext)
+print(list(ciphertext))
