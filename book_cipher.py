@@ -1,6 +1,6 @@
 import random
 
-keytext = "Three rings for the Elven-lords under the sky, Seven for  the  Dwarf-lords  in  their  halls  of  stone,  Nine  for  Mortal  Men  doomed  to  die, One  for  the  Dark  Lord  on  his  dark  throne In the Land of Mordor  where  the  Shadows  lie. One  Ring  to  rule  them  all,  One  Ring  to  find  them, One  Ring  to  bring  them  all  and  in  the  darkness  bind  them In  the  Land  of  Mordor  where  the  Shadows  lie."
+keytext = input("Enter keytext: ")
 keytext_lowered = keytext.lower()
 
 keytext_clean = keytext_lowered.replace("-", " ")
@@ -13,7 +13,7 @@ for index, word in enumerate(keytext_list):
     else:
         letter_to_num_map[first_letter] = [index + 1]
 
-plaintext = "hello"
+plaintext = input("Enter plaintext: ")
 plaintext_as_list = list(plaintext)
 def letter_to_number(letter):
     if letter not in letter_to_num_map:
