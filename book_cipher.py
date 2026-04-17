@@ -6,9 +6,10 @@ letter_to_num_map = {"e": [2, 18, 24, 30], "m": [3, 5, 10]}
 plaintext = "hello"
 plaintext_as_list = list(plaintext)
 def letter_to_number(letter):
-    number_array = letter_to_num_map.get(letter, [letter])
+    if letter not in letter_to_num_map:
+        return letter
+    number_array = letter_to_num_map[letter]
     replacement_index = random.randint(0, len(number_array) - 1)
-    #replacement_number = letter_to_num_map[letter][replacement_index]
     replacement_number = number_array[replacement_index]
     return replacement_number
     
