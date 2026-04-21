@@ -1,5 +1,6 @@
 import random
 
+# Section 1: Encryption
 keytext = input("Enter keytext: ")
 keytext_lowered = keytext.lower()
 
@@ -24,4 +25,21 @@ def letter_to_number(letter):
     return replacement_number
     
 ciphertext = map(letter_to_number, plaintext)
-print(list(ciphertext))
+list_ciphertext = list(ciphertext)
+print(list_ciphertext)
+
+# Section 2: Decryption
+
+recovered_plaintext = ""
+for replacement_character in list_ciphertext:
+    found_in_map = False
+    for letter in letter_to_num_map:
+        if replacement_character in letter_to_num_map[letter]:
+            recovered_plaintext += letter
+            found_in_map = True
+            break
+    if not found_in_map:
+        recovered_plaintext += replacement_character
+
+print("The original plaintext is: " + plaintext)
+print("The recovered plaintext is: " + recovered_plaintext)
